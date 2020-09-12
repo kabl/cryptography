@@ -24,13 +24,19 @@ mkdir crypt plain
 ```
 Create a mount script. Encfs requires absolute paths.
 ```bash
-# mount.sh
+# mount-crypt.sh
+#!/bin/bash
 CRYPT_DIR=`pwd`/crypt 
 PLAIN_DIR=`pwd`/plain 
 encfs $CRYPT_DIR $PLAIN_DIR
 
-# Save that script under "mount.sh" and make it executable
-chmod u+x mount.sh
+# umount-crypt.sh
+#!/bin/bash
+sudo umount plain 
+
+# Save that scripts and make them executable
+chmod u+x mount-crypt.sh.sh
+chmod u+x umount-crypt.sh.sh
 ```
 
 Run the script. If you run it the first time you will be prompted which option you want to use. I recommend the option "p" for paranoia. After that you have to enter twice the initial password. Use a good one. And don't forget it!
@@ -46,13 +52,13 @@ In the "crypt" directory there should be now a hidden file ".encfs6.xml". If you
 To mount the encrypted files just run the command mount.sh
 
 ```bash
-./mount.sh
+./mount-crypt.sh
 ```
 
 To umount the mounted plain directory you need root rights.
 
 ```bash
-sudo umount plain
+./umount-crypt.sh
 ```
 
 If you have mounted the encrypted files you can work in the plain directory as usual. If you're finish with the work just unmount it. Have a look how it looks on the filesystem in a mounted state.
