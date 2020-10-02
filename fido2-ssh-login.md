@@ -1,6 +1,7 @@
 # FIDO2 SSH Login
 
 SSH Login with FIDO2 authentication. Such as YubiKey or SoloKey devices and more.
+OPenSSH 8.2p1 supports FIDO2 out of the box 
 
 ## Prerequisites
 
